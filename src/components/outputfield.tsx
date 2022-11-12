@@ -15,12 +15,16 @@ const OutputField: FunctionComponent<OutputFieldProps> = (props) => {
             className={
                 `
                 m-2 p-2 border-solid border-slate-800 border-2 rounded
-                w-96 align-middle flex flex-row items-center shadow-lg
+                w-96 align-middle flex flex-row items-center shadow-lg bg-neutral-50
                 `
             }
         >
-            <div className=" block basis-full ">
-                <p className={" text-center text-2xl" + (hasOutput ? " text-slate-800 font-normal " : " text-base text-slate-200 font-light ")}>
+            <div className=" block basis-full truncate ">
+                <p className={
+                    `
+                    text-center text-2xl font-light
+                    ` + (hasOutput ? " text-slate-800 "
+                        : " text-base text-slate-300 italic")}>
                     {hasOutput ? output : "Generate a password first"}
                 </p>
             </div>
@@ -34,7 +38,7 @@ const OutputField: FunctionComponent<OutputFieldProps> = (props) => {
                         }
                     }}
                 >
-                    <svg className={" " + (hasOutput ? " fill-slate-800 group-hover:stroke-slate-100 " : " fill-slate-200 cursor-not-allowed ")}
+                    <svg className={" stroke-slate-50 " + (hasOutput ? " fill-slate-800 " : " fill-slate-300 cursor-not-allowed ")}
                         xmlns="http://www.w3.org/2000/svg"
                         height="28" width="28" viewBox="0 0 48 48"
                     >

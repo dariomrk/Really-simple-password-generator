@@ -11,8 +11,12 @@ const ToggleButton: FunctionComponent<ToggleButtonProps> = (props) => {
     return (
         <button
             className={
-                " m-2 p-2 rounded text-base text-slate-800 text-center font-medium drop-shadow-lg"
-                +(state ? " bg-green-500 " :" bg-red-400 ")
+                `
+                m-2 p-2 rounded text-base text-slate-800 text-center
+                font-medium drop-shadow-lg hover:text-slate-100 border-2
+                `
+                + (state ? " border-green-500 bg-green-400 hover:bg-green-500 "
+                    : " bg-red-400 border-red-500 hover:bg-red-500 ")
             }
             onClick={(e) => {
                 e.preventDefault();
