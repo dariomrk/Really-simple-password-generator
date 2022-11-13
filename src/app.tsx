@@ -46,7 +46,7 @@ const App = () => {
                 <div>
                     <LengthSlider callback={(value) => {
                         mutable.current.length = value;
-                    }} defaultValue={mutable.current.length} min={8} max={128} />
+                    }} defaultValue={mutable.current.length} min={1} max={64} />
                     <ToggleButton callback={(state) => {
                         mutable.current.useUppercase = state;
                         reRender();

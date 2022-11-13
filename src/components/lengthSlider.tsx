@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useReducer, useState } from "react";
 
 interface LengthSliderProps {
     callback: (value: number) => void;
@@ -7,21 +7,22 @@ interface LengthSliderProps {
     max: number;
 }
 
-function hslToHex(hue: number, sat: number, lum: number) {
-    lum /= 100;
-    const a = sat * Math.min(lum, 1 - lum) / 100;
-    const f = (n: number) => {
-        const k = (n + hue / 30) % 12;
-        const color = lum - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
-        return Math.round(255 * color).toString(16).padStart(2, '0');
-    };
-    return `#${f(0)}${f(8)}${f(4)}`;
-}
-
 const LengthSlider: FunctionComponent<LengthSliderProps> = (props) => {
 
     const [value, setValue] = useState(props.defaultValue);
-    const hexColor = hslToHex(value, 65, 55);
+    const colors = {
+        bad: "#ef4444",
+        fair: "#f97316",
+        good: "#84cc16",
+        excellent: "#22c55e"
+    }
+
+    let color: string;
+
+    if(value >= 12) color = colors.excellent;
+    else if(value >= 10) color = colors.good;
+    else if(value >= 8) color = colors.fair;
+    else color = colors.bad;
 
     return (
         <div className={
@@ -36,8 +37,8 @@ const LengthSlider: FunctionComponent<LengthSliderProps> = (props) => {
                 setValue(newValue);
                 props.callback(newValue);
             }}
-                type="range" min="8" max="128" value={value}
-                style={{background: hexColor}}
+                type="range" min={props.min} max={props.max} value={value}
+                style={{background: color}}
                 className={
                     `
                     basis-[19rem] appearance-none rounded-full h-2
