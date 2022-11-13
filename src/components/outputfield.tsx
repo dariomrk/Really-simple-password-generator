@@ -19,10 +19,10 @@ const OutputField: FunctionComponent<OutputFieldProps> = (props) => {
                 `
             }
         >
-            <div className=" block basis-full truncate ">
+            <div className=" block basis-full min-w-0">
                 <p className={
                     `
-                    text-center text-2xl font-light
+                    text-center text-2xl font-light text-ellipsis overflow-hidden
                     ` + (hasOutput ? " text-slate-800 "
                         : " text-base text-slate-300 italic")}>
                     {hasOutput ? output : "Generate a password first"}
