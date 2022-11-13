@@ -17,6 +17,7 @@ const App = () => {
         showPassword: true,
         generatedPassword: "",
         canGenerate: true,
+        colorMultiplier: 3,
     });
 
     return (
@@ -44,22 +45,28 @@ const App = () => {
                 <div>
                     <LengthSlider callback={(value) => {
                         mutable.current.length = value;
-                    }} defaultValue={mutable.current.length} min={1} max={64} />
+                    }} defaultValue={mutable.current.length}
+                    colorMultiplier={mutable.current.colorMultiplier}
+                    min={1} max={64} />
                     <div className=" m-2 border-2 rounded border-slate-300 ">
                         <ToggleButton callback={(state) => {
                             mutable.current.useUppercase = state;
+                            state ? mutable.current.colorMultiplier++ : mutable.current.colorMultiplier--;
                             reRender();
                         }} baseState={mutable.current.useUppercase} text="A-Z" />
                         <ToggleButton callback={(state) => {
                             mutable.current.useLowercase = state;
+                            state ? mutable.current.colorMultiplier++ : mutable.current.colorMultiplier--;
                             reRender();
                         }} baseState={mutable.current.useLowercase} text="a-z" />
                         <ToggleButton callback={(state) => {
                             mutable.current.useNumbers = state;
+                            state ? mutable.current.colorMultiplier++ : mutable.current.colorMultiplier--;
                             reRender();
                         }} baseState={mutable.current.useNumbers} text="0-9" />
                         <ToggleButton callback={(state) => {
                             mutable.current.useSpecial = state;
+                            state ? mutable.current.colorMultiplier++ : mutable.current.colorMultiplier--;
                             reRender();
                         }} baseState={mutable.current.useSpecial} text="Special" />
                         <br/>

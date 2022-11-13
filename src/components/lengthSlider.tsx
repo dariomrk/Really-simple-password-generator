@@ -5,6 +5,7 @@ interface LengthSliderProps {
     defaultValue: number;
     min: number;
     max: number;
+    colorMultiplier: number;
 }
 
 const LengthSlider: FunctionComponent<LengthSliderProps> = (props) => {
@@ -17,11 +18,12 @@ const LengthSlider: FunctionComponent<LengthSliderProps> = (props) => {
         excellent: "#22c55e"
     }
 
+    let colorEval = value * props.colorMultiplier;
     let color: string;
 
-    if(value >= 12) color = colors.excellent;
-    else if(value >= 10) color = colors.good;
-    else if(value >= 8) color = colors.fair;
+    if(colorEval >= 48) color = colors.excellent;
+    else if(colorEval >= 40) color = colors.good;
+    else if(colorEval >= 32) color = colors.fair;
     else color = colors.bad;
 
     return (
