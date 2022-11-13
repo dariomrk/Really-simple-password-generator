@@ -17,7 +17,7 @@ const OutputField: FunctionComponent<OutputFieldProps> = (props) => {
             className={
                 `
                 m-2 p-2 border-solid border-slate-800 border-2 rounded
-                w-96 align-middle flex flex-row items-center shadow-lg bg-neutral-50
+                w-96 h-20 align-middle flex flex-row items-center shadow-lg bg-neutral-50
                 `
             }
         >
