@@ -16,8 +16,8 @@ const OutputField: FunctionComponent<OutputFieldProps> = (props) => {
         <div
             className={
                 `
-                m-2 p-2 border-solid border-slate-800 border-2 rounded
-                w-96 h-20 align-middle flex flex-row items-center shadow-lg bg-neutral-50
+                m-2 p-2 border-solid border-slate-300 border-2 rounded
+                w-96 h-20 align-middle flex flex-row items-center shadow-lg bg-[#23272e]
                 `
             }
         >
@@ -25,8 +25,8 @@ const OutputField: FunctionComponent<OutputFieldProps> = (props) => {
                 <p className={
                     `
                     text-center text-2xl font-light text-ellipsis overflow-hidden
-                    ` + (hasOutput ? " text-slate-800 "
-                        : " text-base text-slate-300 italic")}>
+                    ` + (hasOutput ? " text-slate-200 "
+                        : " text-base text-slate-200 italic")}>
                     {hasOutput ? output : "Generate a password first"}
                 </p>
             </div>
@@ -40,7 +40,7 @@ const OutputField: FunctionComponent<OutputFieldProps> = (props) => {
                         }
                     }}
                 >
-                    <svg className={" " + (hasOutput ? " fill-slate-800 " : " fill-slate-300 cursor-not-allowed ")}
+                    <svg className={" " + (hasOutput ? " fill-slate-200 " : " fill-red-500 cursor-not-allowed ")}
                         xmlns="http://www.w3.org/2000/svg"
                         height="28" width="28" viewBox="0 0 48 48"
                     >
@@ -56,7 +56,7 @@ const OutputField: FunctionComponent<OutputFieldProps> = (props) => {
                     }}
                     className=" "
                 >
-                    <svg className={" " + (props.canGenerate ? " fill-slate-800 " : " fill-slate-300 cursor-not-allowed ")}
+                    <svg className={" " + (props.canGenerate ? " fill-slate-200 " : " fill-red-500 cursor-not-allowed ")}
                         xmlns="http://www.w3.org/2000/svg"
                         height="28" width="28" viewBox="0 0 48 48"
                     >
