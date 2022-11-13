@@ -3,6 +3,7 @@ import { FunctionComponent } from "react";
 interface GenerateButtonProps {
     callback: () => void;
     isDisabled: boolean;
+    text: string;
 }
 
 const GenerateButton: FunctionComponent<GenerateButtonProps> = (props) => {
@@ -22,7 +23,7 @@ const GenerateButton: FunctionComponent<GenerateButtonProps> = (props) => {
                 }
             }}
         >
-            Generate new password
+            {props.text}
         </button>
     );
 }
