@@ -1,5 +1,4 @@
 import { Fragment, useRef, useReducer } from "react";
-import GenerateButton from "./components/generateButton";
 import LengthSlider from "./components/lengthSlider";
 import OutputField from "./components/outputfield";
 import ToggleButton from "./components/togglebutton";
