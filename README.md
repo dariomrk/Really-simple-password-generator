@@ -5,5 +5,5 @@ A really friggin simple password generator.
 Built on top of these awesome technologies:
 - React
 - Typescript
-- -Tailwind
+- Tailwind
 - Vite
