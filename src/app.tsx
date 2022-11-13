@@ -1,33 +1,55 @@
-import { Fragment } from "react";
+import { Fragment, useRef, useState } from "react";
 import GenerateButton from "./components/generateButton";
 import LengthSlider from "./components/lengthSlider";
 import OutputField from "./components/outputfield";
 import ToggleButton from "./components/togglebutton";
-
-function generatePassword(): string {
-    const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const lowercase = uppercase.toLowerCase();
-    const numbers = "0123456789";
-    const special = "-_()[]{}*+=<>#$%&/?!;:,.";
-}
+import generator from "./functions/generator";
 
 const App = () => {
 
-    
+    const optionsRef = useRef({
+        useUppercase : true,
+        useLowercase : true,
+        useNumbers: true,
+        useSpecial : false,
+        length : 12,
+        showPassword: true,
+        generatedPassword: "",
+    });
 
     return (
         <Fragment>
             <div>
-                <OutputField output="" isShown={true}/>
-                <GenerateButton callback={()=>{}} isDisabled={false} text="Generate"/>
+                <OutputField output="" isShown={true} />
+                <GenerateButton callback={() => {
+                    optionsRef.current.generatedPassword = generator(
+                        optionsRef.current.useUppercase,
+                        optionsRef.current.useLowercase,
+                        optionsRef.current.useNumbers,
+                        optionsRef.current.useSpecial,
+                        optionsRef.current.length
+                    )
+                }} isDisabled={false} text="Generate" />
             </div>
             <div>
-                <LengthSlider callback={()=>{}} defaultValue={12} min={8} max={128} />
-                <ToggleButton callback={()=>{}} baseState={true} text="A-Z"/>
-                <ToggleButton callback={()=>{}} baseState={true} text="a-z"/>
-                <ToggleButton callback={()=>{}} baseState={true} text="0-9"/>
-                <ToggleButton callback={()=>{}} baseState={true} text="Special"/>
-                <ToggleButton callback={()=>{}} baseState={true} text="Show password"/>
+                <LengthSlider callback={(value) => {
+                    optionsRef.current.length = value;
+                }} defaultValue={optionsRef.current.length} min={8} max={128} />
+                <ToggleButton callback={(state) => {
+                    optionsRef.current.useUppercase = state;
+                }} baseState={optionsRef.current.useUppercase} text="A-Z" />
+                <ToggleButton callback={(state) => {
+                    optionsRef.current.useLowercase = state;
+                }} baseState={optionsRef.current.useLowercase} text="a-z" />
+                <ToggleButton callback={(state) => {
+                    optionsRef.current.useNumbers = state;
+                }} baseState={optionsRef.current.useNumbers} text="0-9" />
+                <ToggleButton callback={(state) => {
+                    optionsRef.current.useSpecial = state;
+                }} baseState={optionsRef.current.useSpecial} text="Special" />
+                <ToggleButton callback={(state) => {
+                    optionsRef.current.showPassword = state;
+                }} baseState={true} text="Show password" />
             </div>
         </Fragment>
     );

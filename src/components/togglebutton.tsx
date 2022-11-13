@@ -20,8 +20,8 @@ const ToggleButton: FunctionComponent<ToggleButtonProps> = (props) => {
             }
             onClick={(e) => {
                 e.preventDefault();
+                props.callback(!state);
                 setState(!state);
-                props.callback(state);
             }}
         >
             {props.text}
