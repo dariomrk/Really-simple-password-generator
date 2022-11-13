@@ -26,8 +26,8 @@ const LengthSlider: FunctionComponent<LengthSliderProps> = (props) => {
     return (
         <div className={
             `
-            m-2 p-2 flex flex-row items-center w-96 border-2 rounded border-slate-300
-            bg-slate-200 
+            m-2 p-2 flex flex-row items-center w-96 border-solid border-slate-800
+            border-2 bg-slate-200 rounded
             `
         }
         >
@@ -40,8 +40,7 @@ const LengthSlider: FunctionComponent<LengthSliderProps> = (props) => {
                 style={{background: hexColor}}
                 className={
                     `
-                    basis-[19rem] appearance-none border-2 rounded-full
-                  border-slate-300 
+                    basis-[19rem] appearance-none rounded-full h-2
                     `
                 }
             />
