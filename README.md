@@ -1,5 +1,6 @@
 # Really simple password generator
-A really *friggin'* simple password generator.
+A really *friggin'* simple password generator.  
+You can use the latest version [here](https://dariomrk.github.io/Really-simple-password-generator/).
 
 **Built on top of these awesome technologies:**
 - `React`
